@@ -1753,6 +1753,9 @@ function createHotSpot(hs) {
     }
     if (hs.clickHandlerFunc) {
         div.addEventListener('click', function(e) {
+            if(hs.clickHandlerExitFullScreen){
+                if(fullscreenActive) exitFullscreen();
+            }
             hs.clickHandlerFunc(e, hs.clickHandlerArgs);
         }, 'false');
         div.className += ' pnlm-pointer';
@@ -2098,15 +2101,25 @@ function toggleFullscreen() {
                 // Fullscreen doesn't work
             }
         } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
+            exitFullscreen();
+        }
+    }
+}
+
+/**
+ * exit fullscreen mode.
+ * @private
+ */
+function exitFullscreen() {
+    if (fullscreenActive) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
         }
     }
 }
