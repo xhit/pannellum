@@ -1724,7 +1724,15 @@ function createHotSpot(hs) {
             div.onclick = div.ontouchend = function() {
                 if (!div.clicked) {
                     div.clicked = true;
-                    loadScene(hs.sceneId, hs.targetPitch, hs.targetYaw, hs.targetHfov);
+                    var scenes = [];
+                    for(var k in config.scenes) scenes.push(String(k));
+
+                    if(scenes.indexOf(hs.sceneId) > -1){
+                        loadScene(hs.sceneId, hs.targetPitch, hs.targetYaw, hs.targetHfov);
+                    }else{
+                        div.clicked = false;
+                        fireEvent('customerror',config.strings.noPanoramaError);
+                    }
                 }
                 return false;
             };
