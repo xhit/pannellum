@@ -1,3 +1,35 @@
+# Changes from forked library
+
+## Api event "customerror"
+New api event "customerror" what is fired when sceneId doesn't exists. Project example: when in a tour builder the user create hotspots in every scene, if hotspot is type scene then you can control when is clicked if only a scene of the tour is loaded.
+
+Example code for customerror event:
+
+```
+v.on('customerror',function(event){
+     alert(event);
+});
+```
+
+## New function click handler "clickHandlerExitFullScreen"
+
+New hotspot key object "clickHandlerExitFullScreen" that receive a boolean. When a function is called from hotspot and scene is fullscreen and this function return a modal or other design object then you can call  "clickHandlerExitFullScreen": true for exit fullscreenmode when click hotspot for show modal or other object.
+
+Example code creating a hotspot via API
+
+```
+v.addHotSpot({
+	"id": 1,
+	"pitch": 23.30845576173100,
+	"yaw": -17.73361167227700,
+	"type": "info",
+	"text": "Test",
+	"clickHandlerFunc": showModal,
+	"clickHandlerArgs": {"id":1},
+	"clickHandlerExitFullScreen" : true
+},sceneID);
+```
+
 # Pannellum
 
 [![Build Status](https://travis-ci.com/mpetroff/pannellum.svg?branch=master)](https://travis-ci.com/mpetroff/pannellum)
