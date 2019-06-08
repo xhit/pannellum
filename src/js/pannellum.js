@@ -157,7 +157,7 @@ uiContainer.appendChild(dragFix);
 // Display about information on right click
 var aboutMsg = document.createElement('span');
 aboutMsg.className = 'pnlm-about-msg';
-aboutMsg.innerHTML = '<a href="https://pannellum.org/" target="_blank">Pannellum</a>';
+aboutMsg.innerHTML = '<a href="https://github.com/xhit/pannellum/" target="_blank">Pannellum</a>';
 uiContainer.appendChild(aboutMsg);
 dragFix.addEventListener('contextmenu', aboutMessage);
 
@@ -635,21 +635,36 @@ function clearError() {
 }
 
 /**
- * Displays about message.
+ * Displays Pannellum about message. if showAboutMessage is true or undefined
  * @private
  * @param {MouseEvent} event - Right click location
  */
 function aboutMessage(event) {
-    var pos = mousePosition(event);
-    aboutMsg.style.left = pos.x + 'px';
-    aboutMsg.style.top = pos.y + 'px';
-    clearTimeout(aboutMessage.t1);
-    clearTimeout(aboutMessage.t2);
-    aboutMsg.style.display = 'block';
-    aboutMsg.style.opacity = 1;
-    aboutMessage.t1 = setTimeout(function() {aboutMsg.style.opacity = 0;}, 2000);
-    aboutMessage.t2 = setTimeout(function() {aboutMsg.style.display = 'none';}, 2500);
-    event.preventDefault();
+
+    //Priority about message in json config instead public function
+    if (config.aboutMessageText){
+
+        aboutMsg.innerHTML = config.aboutMessageText;
+        
+        if (config.aboutMessageLink){
+            aboutMsg.innerHTML = '<a href="'+config.aboutMessageLink+'" target="_blank">'+config.aboutMessageText+'</a>';
+        }
+
+        uiContainer.appendChild(aboutMsg);
+    }
+
+    if (config.showAboutMessage == undefined || config.showAboutMessage){
+        var pos = mousePosition(event);
+        aboutMsg.style.left = pos.x + 'px';
+        aboutMsg.style.top = pos.y + 'px';
+        clearTimeout(aboutMessage.t1);
+        clearTimeout(aboutMessage.t2);
+        aboutMsg.style.display = 'block';
+        aboutMsg.style.opacity = 1;
+        aboutMessage.t1 = setTimeout(function() {aboutMsg.style.opacity = 0;}, 2000);
+        aboutMessage.t2 = setTimeout(function() {aboutMsg.style.display = 'none';}, 2500);
+        event.preventDefault();
+    }
 }
 
 /**
@@ -3090,6 +3105,22 @@ this.destroy = function() {
     container.classList.remove('pnlm-container');
 }
 
+}
+
+/**
+ *aboutMessage
+ *Shows a custom text and link if provided for contextmenu about message
+* @instance
+ * @memberof Viewer
+ */
+this.aboutMessage = function(text,link){
+    if(link){
+        aboutMsg.innerHTML = '<a href="'+link+'" target="_blank">'+text+'</a>';
+    }else{
+        aboutMsg.innerHTML = text;
+    }
+    uiContainer.appendChild(aboutMsg);
+    dragFix.addEventListener('contextmenu', aboutMessage);
 }
 
 return {

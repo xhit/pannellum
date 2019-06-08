@@ -30,6 +30,35 @@ v.addHotSpot({
 },sceneID);
 ```
 
+## New API function "aboutMessage"
+
+Now you can change the aboutMessage displayed when right click is triggered in viewer, you need send the text to display and link (this is optional).
+
+Example code:
+
+`v.aboutMessage('Pannellum','https://pannellum.org/');`
+
+## New JSON key objects for about message
+
+Also you can change it, enable it or disable it via JSON configuration:
+
+The 3 new objects are:
+
+- showAboutMessage (if not specified default is true)
+- aboutMessageText (if not specified default is Pannellum or the assigned via API with function aboutMessage)
+- aboutMessageLink (if not specified default is link to this fork, only shows if aboutMessageText is specified)
+
+Example code:
+
+```
+pannellum.viewer("panorama", {
+			    "showAboutMessage":true,
+			    "aboutMessageText":"Google",
+			    "aboutMessageLink":"https://google.com/"
+		    	}
+		   );
+```
+
 # Pannellum
 
 ## About
