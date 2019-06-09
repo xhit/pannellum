@@ -640,20 +640,18 @@ function clearError() {
  * @param {MouseEvent} event - Right click location
  */
 function aboutMessage(event) {
-
-    //Priority about message in json config instead public function
-    if (config.aboutMessageText){
-
-        aboutMsg.innerHTML = config.aboutMessageText;
-        
-        if (config.aboutMessageLink){
-            aboutMsg.innerHTML = '<a href="'+config.aboutMessageLink+'" target="_blank">'+config.aboutMessageText+'</a>';
-        }
-
-        uiContainer.appendChild(aboutMsg);
-    }
-
     if (config.showAboutMessage == undefined || config.showAboutMessage){
+        //Priority about message in json config instead public function
+        if (config.aboutMessageText){
+
+            aboutMsg.innerHTML = config.aboutMessageText;
+            
+            if (config.aboutMessageLink){
+                aboutMsg.innerHTML = '<a href="'+config.aboutMessageLink+'" target="_blank">'+config.aboutMessageText+'</a>';
+            }
+
+            uiContainer.appendChild(aboutMsg);
+        }
         var pos = mousePosition(event);
         aboutMsg.style.left = pos.x + 'px';
         aboutMsg.style.top = pos.y + 'px';
