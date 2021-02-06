@@ -3352,22 +3352,6 @@ this.destroy = function() {
 
 }
 
-/**
- *aboutMessage
- *Shows a custom text and link if provided for contextmenu about message
-* @instance
- * @memberof Viewer
- */
-this.aboutMessage = function(text,link){
-    if(link){
-        aboutMsg.innerHTML = '<a href="'+link+'" target="_blank">'+text+'</a>';
-    }else{
-        aboutMsg.innerHTML = text;
-    }
-    uiContainer.appendChild(aboutMsg);
-    dragFix.addEventListener('contextmenu', aboutMessage);
-}
-
 return {
     viewer: function(container, config) {
         return new Viewer(container, config);
