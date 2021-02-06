@@ -1,7 +1,7 @@
-# Changes from forked library
+# Changes in this branch
 
 ## Api event "customerror"
-New api event "customerror" what is fired when sceneId doesn't exists. Project example: when in a tour builder the user create hotspots in every scene, if hotspot is type scene then you can control when is clicked if only a scene of the tour is loaded.
+New api event `customerror` what is fired when sceneId doesn't exists. Project example: when in a tour builder the user create hotspots in every scene, if hotspot is type scene then you can control when is clicked if only a scene of the tour is loaded.
 
 Example code for customerror event:
 
@@ -11,9 +11,9 @@ v.on('customerror',function(event){
 });
 ```
 
-## New function click handler "clickHandlerExitFullScreen"
+## New function click handler `clickHandlerExitFullScreen`
 
-New hotspot key object "clickHandlerExitFullScreen" that receive a boolean. When a function is called from hotspot and scene is fullscreen and this function return a modal or other design object then you can call  "clickHandlerExitFullScreen": true for exit fullscreenmode when click hotspot for show modal or other object.
+New hotspot key object `clickHandlerExitFullScreen` that receive a boolean. When a function is called from hotspot and scene is fullscreen and this function return a modal or other design object then you can call  `"clickHandlerExitFullScreen": true` for exit fullscreenmode when click hotspot for show modal or other object.
 
 Example code creating a hotspot via API
 
@@ -30,7 +30,7 @@ v.addHotSpot({
 },sceneID);
 ```
 
-## New API function "aboutMessage"
+## New API function `aboutMessage`
 
 Now you can change the aboutMessage displayed when right click is triggered in viewer, you need send the text to display and link (this is optional).
 
@@ -44,9 +44,9 @@ Also you can change it, enable it or disable it via JSON configuration:
 
 The 3 new objects are:
 
-- showAboutMessage (if not specified default is true)
-- aboutMessageText (if not specified default is Pannellum or the assigned via API with function aboutMessage)
-- aboutMessageLink (if not specified default is link to this repository, only shows if aboutMessageText is specified)
+- `showAboutMessage` (if not specified default is true)
+- `aboutMessageText` (if not specified default is Pannellum or the assigned via API with function aboutMessage)
+- `aboutMessageLink` (if not specified default is link to Pannellum web, only shows if aboutMessageText is specified)
 
 Example code:
 
