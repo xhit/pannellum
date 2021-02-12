@@ -1871,6 +1871,10 @@ function createHotSpot(hs) {
         span.style.width = span.scrollWidth - 20 + 'px';
         span.style.marginLeft = -(span.scrollWidth - div.offsetWidth) / 2 + 'px';
         span.style.marginTop = -span.scrollHeight - 12 + 'px';
+        // tooltip always visible
+        if (hs.textAlwaysVisible){
+            span.style.visibility = "visible";
+        }
     }
     if (hs.clickHandlerFunc) {
         div.addEventListener('click', function(e) {
