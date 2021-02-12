@@ -30,6 +30,10 @@ v.addHotSpot({
 },sceneID);
 ```
 
+## Always show tooltip hotspot text
+
+Use the key `textAlwaysVisible` of bool type to always show the tooltip of hotspot.
+
 ## New JSON key objects for about message
 
 Also you can change it, enable it or disable it via JSON configuration:
